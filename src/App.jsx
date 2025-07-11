@@ -14,11 +14,9 @@ const App = () => {
       .catch((err) => console.log("Error: ", err));
   }, []);
 
-  console.log("User Data: ", data);
-
   return (
     <>
-      <HashRouter basename="/vite-project"> 
+      <HashRouter>
         <Links />
         <Routes>
           <Route path="/" element={<Home data={data} />}>
