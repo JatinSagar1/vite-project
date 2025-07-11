@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Links from "./Links";
+import Home from "./Home";
+import Profiles from "./Profiles";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [data, setdata] = useState([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((rdata) => rdata.json())
+      .then((data) => setdata(data))
+      .catch((err) => console.log("Error: ", err));
+  }, []);
+
+  console.log("User Data: ", data);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <BrowserRouter basename="/vite-project"> 
+        <Links />
+        <Routes>
+          <Route path="/" element={<Home data={data} />}>
+            <Route path="user/profile/:id" element={<Profiles data={data} />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

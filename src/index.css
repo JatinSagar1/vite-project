@@ -1,68 +1,124 @@
+/* index.css */
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+    --bg-color: #f3f6f9;
+    --text-color: #2d3436;
+    --card-bg: #ffffff;
+    --hover-bg: #dfe6e9;
   }
-  a:hover {
-    color: #747bff;
+  
+  body.dark {
+    --bg-color: #1e1e1e;
+    --text-color: #ecf0f1;
+    --card-bg: #2c3e50;
+    --hover-bg: #34495e;
   }
-  button {
-    background-color: #f9f9f9;
+  
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 0;
   }
-}
+  
+  .container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .user-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px 20px;
+    margin-top: 20px;
+  }
+  
+  .user-list span {
+    display: inline-block;
+    padding: 10px 16px;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background 0.2s ease, transform 0.3s ease;
+  }
+  
+  .user-list span:hover {
+    background-color: var(--hover-bg);
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+  
+  .user-list a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+  }
+  
+  .profile-box {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    text-align: left;
+    transition: all 0.3s ease;
+  }
+  
+  .profile-box h2 {
+    color: var(--text-color);
+    margin-bottom: 10px;
+  }
+  
+  .profile-box p {
+    font-size: 16px;
+    margin: 8px 0;
+    color: var(--text-color);
+  }
+  
+  .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  .drop-zone {
+    border: 2px dashed var(--hover-bg);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background 0.3s ease;
+  }
+  
+  .drop-zone.drag-over {
+    background-color: var(--hover-bg);
+  }
+  
+  .upload-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 12px;
+    background-color: var(--hover-bg);
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--text-color);
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  
+  .upload-btn:hover {
+    background-color: var(--text-color);
+    color: var(--card-bg);
+  }
+  
